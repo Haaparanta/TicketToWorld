@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://wc0mx1jl23tt"]
+
+[ext_resource type="ArrayMesh" uid="uid://c1y2pgo5y2w41" path="res://globe.obj" id="1_0iyjy"]
+[ext_resource type="Script" uid="uid://crtu71j0mwnlk" path="res://AirportSelector.gd" id="1_pvl3y"]
+[ext_resource type="Script" uid="uid://1eji5xwmakbe" path="res://main.gd" id="1_u8uod"]
+[ext_resource type="Texture2D" uid="uid://csg44veoprc7e" path="res://world-globe.jpg" id="2_u8uod"]
+[ext_resource type="Script" uid="uid://bgwy6bpl825uc" path="res://orbitCam.gd" id="4_pvl3y"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pvl3y"]
+albedo_texture = ExtResource("2_u8uod")
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_u8uod")
+
+[node name="Globe" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_0iyjy")
+surface_material_override/0 = SubResource("StandardMaterial3D_pvl3y")
+
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.69574, 0, 0)
+script = ExtResource("4_pvl3y")
+target = NodePath("../Globe")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.0296, 0, 0)
+
+[node name="Node3D" type="Node3D" parent="." node_paths=PackedStringArray("camera", "info_label")]
+script = ExtResource("1_pvl3y")
+camera = NodePath("../Camera3D")
+info_label = NodePath("../Control/AirportInfoLabel")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="AirportInfoLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
