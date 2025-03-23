@@ -20,6 +20,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_pvl3y")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.69574, 0, 0)
 script = ExtResource("4_pvl3y")
 target = NodePath("../Globe")
+distance = null
+rotation_speed = null
+zoom_speed = null
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.0296, 0, 0)
